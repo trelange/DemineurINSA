@@ -301,7 +301,7 @@ void regenererGrille(InterfaceJeu* interface, int lignes, int colonnes, int mine
     interface->timerActif = 0;
 
     gtk_label_set_text(GTK_LABEL(interface->labelChrono), "⏱️ 000 s");
-    gtk_label_set_text(GTK_LABEL(interface->labelStatut), "Bonne chance !");
+    gtk_label_set_text(GTK_LABEL(interface->labelStatut), "Bonne chance ! 🍀");
 
     if (interface->grilleBoutons) {
         gtk_widget_destroy(interface->grilleBoutons);
@@ -383,7 +383,7 @@ InterfaceJeu* creerInterface(int lignes, int colonnes, int mines) {
     interface->labelMines = gtk_label_new("💣");
     gtk_box_pack_start(GTK_BOX(hboxInfo), interface->labelMines, FALSE, FALSE, 0);
 
-    interface->labelStatut = gtk_label_new("Bonne chance !");
+    interface->labelStatut = gtk_label_new("Bonne chance ! 🍀");
     gtk_box_pack_start(GTK_BOX(hboxInfo), interface->labelStatut, TRUE, TRUE, 0);
 
     interface->labelChrono = gtk_label_new("⏱️ 000 s");

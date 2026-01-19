@@ -25,7 +25,7 @@ int obtenirNbMinesVoisines(Grille* grille, int lig, int col) {
 
 int compterVoisins(Grille* grille, int lig, int col, int typeCellule) {
     int compte = 0;
-    // Parcourir les 8 voisins
+    //On parcourt les cases voisines
     for (int i = -1; i <= 1; i++) {
         for (int j = -1; j <= 1; j++) {
             if (i == 0 && j == 0) continue; // Ignorer la case centrale
@@ -120,7 +120,6 @@ int verifierVictoire(Grille* grille) {
 }
 
 void revelerCasesVides(Grille* grille, int lig, int col) {
-    // Algorithme de remplissage (Flood fill)
     for (int i = -1; i <= 1; i++) {
         for (int j = -1; j <= 1; j++) {
             if (i == 0 && j == 0) continue;
@@ -130,7 +129,6 @@ void revelerCasesVides(Grille* grille, int lig, int col) {
 
             if (estPositionValide(grille, vLig, vCol)) {
                 Case* c = &grille->grille[vLig][vCol];
-                // On révèle récursivement si la case est CACHE et n'est pas une mine
                 if (c->etat == CACHE && !c->estMine) {
                     revelerCase(grille, vLig, vCol);
                 }
@@ -162,8 +160,7 @@ int revelerCase(Grille* grille, int lig, int col) {
     if (c->etat == DRAPEAU || c->etat == REVELE) return 0;
 
     // GESTION DU PREMIER CLIC :
-    // On ne place les mines et on ne calcule les voisins qu'au premier clic
-    // pour s'assurer que le joueur ne tombe jamais sur une mine dès le début.
+    // On ne place les mines et on ne calcule les voisins qu'au premier clic pour s'assurer que le joueur ne tombe jamais sur une mine dès le début.
     if (grille->premiereRevelation) {
         grille->premiereRevelation = 0;
         placerMines(grille, lig, col);
